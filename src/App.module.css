@@ -1,0 +1,12 @@
+.appWrapper {
+  display: grid;
+  grid-template-areas:
+        "header header"
+         "nav content";
+    grid-template-columns: 1.5fr 10.5fr;
+    grid-template-rows: 50px 12fr;
+}
+.content {
+    display: inline-block;
+    grid-area: content;
+}

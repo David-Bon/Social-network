@@ -1,11 +1,8 @@
 import React from "react";
-import './header.css'
+import s from './header.module.css'
 
 const Header = () => {
-return <div className='top-panel d-flex'>
-    <img className='mini-icon' src="https://cdn.icon-icons.com/icons2/1099/PNG/512/1485482214-facebook_78681.png" alt=""/>
-    
-    
+return <div className={s.top}>
     Header</div>
 };
 

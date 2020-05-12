@@ -1,19 +1,15 @@
 import React from "react";
-import './post.css'
+import s from './post.module.css'
 
 const Post = () => {
     return (
         <div>
-            <div className="card flex">
-                <div className="card-header">
-                    Fen
-                </div>
-                <div className="card-body">
-                    <h4 className="card-title">Special title treatment</h4>
-
-                    <div className='d-flex justify-content-end'><div className='likes'><p>1 people likes that</p></div> <button className='btn btn-outline-secondary'>Like</button></div>
-
-                </div>
+            <div className={s.card}>
+                <img  className={s.img} src="//venezuelaworkers.com/media/pic_folder/none/no-img.jpg" alt=""/>
+                    <span>Fen</span>
+                    <span className={s.cardTitle}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias debitis quis rem. Corporis dignissimos doloremque esse, eveniet expedita fugit, molestias odio odit pariatur sed ut voluptas. Iste nobis odio odit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, cumque ducimus excepturi facilis in ipsa ipsam sapiente. Adipisci debitis deleniti dolor eligendi voluptatibus? Aspernatur assumenda at dignissimos laboriosam minus nesciunt.</span>
+                       <span className={s.likes}>1 likes</span>
+                       <button className={s.likeButton}>Like</button>
             </div>
         </div>
     )

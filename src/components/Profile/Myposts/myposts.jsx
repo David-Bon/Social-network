@@ -1,22 +1,21 @@
 import React from "react";
-import './myposts.css'
+import s from './myposts.module.css'
 import Post from "../Post/post";
 
 const MyPosts = () => {
     return <div>
-
             <div>
-                <div className="input-group input-group-lg">
-                    <input className="form-control" type="text" placeholder="Default input"/>
+                <div className={s.inputGroup}>
+                    <input className={s.formControl} type="text" placeholder="Default input"/>
                 </div>
-                <button className="input-group-text">Add</button>
+                <button className={s.inputGroupText}>Add</button>
             </div>
 
 
-            <div className='group'>
-                <Post/>,
-                <Post/>,
-                <Post/>,
+            <div className={s.group}>
+                <Post/>
+                <Post/>
+                <Post/>
                 <Post/>
 
             </div>

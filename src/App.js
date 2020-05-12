@@ -1,18 +1,24 @@
 import React from 'react';
-import './App.css';
+import s from './App.module.css';
 import Profile from "./components/Profile/profile";
 import Header from "./components/Header/header";
 import Navbar from "./components/Navbar/navbar";
+import Dialogs from "./components/Dialogs/dialogs";
+import {BrowserRouter, Route} from "react-router-dom";
 
 const App = () => {
     return (
-        <div className='container-fluid'>
+        <BrowserRouter>
+            <div id="app-wrapper" className={s.appWrapper}>
                 <Header/>
-                <div className='d-flex'>
-                    <Navbar/>
-                    <Profile/>
+                <Navbar/>
+                <div className={s.content}>
+                    <Route path="/profile" component={Profile}/>
+                    <Route path="/dialogs" component={Dialogs}/>
                 </div>
-        </div>
+
+            </div>
+        </BrowserRouter>
     );
 };
 export default App;

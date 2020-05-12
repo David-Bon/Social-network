@@ -1,20 +1,21 @@
 import React from "react";
-import './navbar.css'
+import s from './navbar.module.css'
+import {NavLink} from "react-router-dom";
 
 const Navbar = () => {
-    return <nav className="nav flex-column">
-        <ul>
-            <li><a className="nav-link active" href="#">Profile</a>
+    return <nav className={s.nav}>
+        <ul className={s.ul}>
+            <li><NavLink className={s.btnLink} activeClassName={s.active} to="/profile">Profile</NavLink>
             </li>
-            <li><a className="nav-link" href="#">News</a>
+            <li><NavLink className={s.btnLink} activeClassName={s.active} to="/news">News</NavLink>
             </li>
-            <li><a className="nav-link" href="#">Messages</a>
+            <li><NavLink to="/dialogs" className={s.btnLink} activeClassName={s.active}>Messages</NavLink>
             </li>
-            <li><a className="nav-link" href="#">Music</a>
+            <li><NavLink className={s.btnLink} activeClassName={s.active} to="/music">Music</NavLink>
             </li>
-            <li><a className="nav-link" href="#">Users</a>
+            <li><NavLink className={s.btnLink} activeClassName={s.active} to="/users">Users</NavLink>
             </li>
-            <li><a className="nav-link" href="#">Settings</a>
+            <li><NavLink className={s.btnLink} activeClassName={s.active} to="/settings">Settings</NavLink>
             </li>
         </ul>
     </nav>

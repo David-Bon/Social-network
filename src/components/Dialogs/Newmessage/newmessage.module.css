@@ -1,0 +1,5 @@
+.content {
+    display: grid;
+    background-color: #1eb07f;
+    grid-area: newmessage;
+}

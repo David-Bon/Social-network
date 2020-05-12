@@ -1,0 +1,5 @@
+.top {
+    background-color: #61dafb;
+    grid-area: header;
+    height: 50px;
+}

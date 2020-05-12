@@ -1,10 +1,10 @@
 import React from "react";
-import './profile.css'
+import s from './profile.module.css'
 import MyPosts from "./Myposts/myposts";
 import UserInfo from "./UserInfo/userinfo";
 
 const Profile = () => {
-return <div className='content container-fluid'>
+return <div className={s.content}>
         <UserInfo/>
         <MyPosts/>
     </div>

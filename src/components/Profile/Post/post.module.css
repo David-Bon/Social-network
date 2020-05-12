@@ -1,0 +1,39 @@
+.card {
+    display: flex;
+    margin-left: 60px;
+    margin-right: 60px;
+    background-color: #999999;
+    margin-top: 10px;
+    border-radius: 12px;
+}
+.img {
+    width: 100%;
+    max-width: 120px;
+    height: 120px;
+}
+.likes {
+margin: 120px 28px 16px 100px;
+}
+.likeButton{
+    float: right;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+
+}
+
+.cardBody {
+
+}
+.cardHeader {
+
+}
+.cardTitle {
+    margin-top: 50px;
+    margin-left: 60px;
+}
+.likeCount {
+
+}
+.btn {
+}

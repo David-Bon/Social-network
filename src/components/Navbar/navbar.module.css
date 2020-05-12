@@ -1,0 +1,15 @@
+.nav  {
+    background-color: #0864a4;
+    grid-area: nav ;
+}
+.btnLink {
+    font-size: 30px;
+    text-decoration: none;
+    color: white;
+}
+.active {
+    color: #1eb07f;
+}
+.ul {
+    list-style-type: none;
+}
