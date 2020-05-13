@@ -1,11 +1,9 @@
 import React from "react";
 import s from './messages.module.css'
 
-const Messages = () => {
+const Messages = (props) => {
   return <div className={s.content}>
-<p>blabla</p>
-    <p>blabla</p>
-    <p>blabla</p>
+  <p>{props.message}</p>
   </div>
 };
 

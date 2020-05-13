@@ -1,13 +1,12 @@
 import React from "react";
 import s from './people.module.css'
+import {NavLink} from "react-router-dom";
 
-const People = () => {
+const People = (props) => {
+ let path =  "/dialogs/"+props.id;
   return <div className={s.content}>
 <ul className={s.ul}>
-  <li>Alex</li>
-  <li>Savl</li>
-  <li>Peter</li>
-  <li>Orest</li>
+  <li><NavLink to={path} className={s.btnLink} activeClassName={s.active}>{props.name}</NavLink></li>
 </ul>
   </div>
 };

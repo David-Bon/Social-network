@@ -2,3 +2,14 @@
     background-color: #1eb07f;
     grid-area: people;
 }
+.btnLink {
+    font-size: 30px;
+    text-decoration: none;
+    color: dodgerblue;
+}
+.active {
+    color: firebrick;
+}
+.ul {
+    list-style-type: none;
+}
