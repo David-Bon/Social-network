@@ -6,7 +6,7 @@ import UserInfo from "./UserInfo/userinfo";
 const Profile = (props) => {
 return <div className={s.content}>
         <UserInfo/>
-        <MyPosts posts={props.posts}/>
+        <MyPosts posts={props.posts} newPostText={props.newPostText} updateNewPostText={props.updateNewPostText} addPost={props.addPost}/>
     </div>
 };
 

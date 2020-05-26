@@ -12,10 +12,12 @@ const App = (props) => {
             <div id="app-wrapper" className={s.appWrapper}>
                 <Header/>
                 <Navbar/>
-                <div className={s.content}>
-                    <Route exact path="/profile" render={()=> <Profile posts={props.state.posts}/>}/>
-                    <Route path="/dialogs" render={()=> <Dialogs peopleData={props.state.peopleData} messagesData={props.state.messagesData}/>}/>
-                </div>
+                <Route exact path="/profile"
+                       render={() => <Profile className={s.content} newPostText={props.newPostText}
+                                              updateNewPostText={props.updateNewPostText}
+                                              posts={props.store.profilePage.posts} addPost={props.addPost}/>}/>
+                <Route path="/dialogs" render={() => <Dialogs peopleData={props.state.dialogsPage.peopleData}
+                                                              messagesData={props.state.dialogsPage.messagesData}/>}/>
 
             </div>
         </BrowserRouter>

@@ -10,8 +10,8 @@ const Dialogs = (props) => {
     let peopleElements = props.peopleData.map(el => <People id={el.id} name={el.name}/>);
 
     return <div className={s.gridContainer}>
-        {peopleElements}
-        {messageElements}
+        <div className={s.pe}>{peopleElements}</div>
+        <div className={s.me}>{messageElements}</div>
         <Newmessage/>
     </div>
 };

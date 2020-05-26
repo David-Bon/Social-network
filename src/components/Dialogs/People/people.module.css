@@ -1,6 +1,6 @@
 .content {
     background-color: #1eb07f;
-    grid-area: people;
+
 }
 .btnLink {
     font-size: 30px;
@@ -12,4 +12,7 @@
 }
 .ul {
     list-style-type: none;
+    margin: auto 0;
+    padding: 0;
+    grid-area: people;
 }

@@ -1,4 +1,7 @@
-.content {
+.sho {
     grid-area: messages;
+    margin: auto 0;
+}
+.content {
     background-color: #1eb07f;
 }

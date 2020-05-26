@@ -1,11 +1,15 @@
 .gridContainer{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1.3fr 0.7fr;
-    gap: 1px 1px;
+    grid-template-columns: 2fr 8fr;
+    grid-template-rows: 1fr;
     grid-template-areas:
-            "people messages messages messages"
-            "people messages messages messages"
-            "people messages messages messages"
-            "people newmessage newmessage newmessage";
+            "people messages"
+            "people messages"
+            "people newmessage";
+}
+.me {
+    display: grid;
+}
+.pe {
+
 }
