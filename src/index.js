@@ -4,10 +4,11 @@ import './index.css';
 import * as serviceWorker from './serviceWorker'
 import App from "./App";
 import store from "./redux/state";
+import {BrowserRouter} from "react-router-dom";
 
 let RerenderEntireTree = (state) => {
-    ReactDOM.render( <App store={state} updateNewPostText={store.updateNewPostText.bind(store)} newPostText={state.profilePage.newPostText}
-                         addPost={store.addPost.bind(store)}/>, document.getElementById('root')
+    ReactDOM.render(<BrowserRouter> <App state={state} dispatch={store.dispatch.bind(store)}/>
+        </BrowserRouter>, document.getElementById('root')
     );
 };
 RerenderEntireTree(store.getState());

@@ -1,6 +1,7 @@
-import React from "react";
+import {ProfileReducer} from "./profile-reducer";
+import {DialogsReducer} from "./dialogs-reducer";
 
- let store = {
+let store = {
     _state: {
         profilePage: {
             posts: [
@@ -16,9 +17,9 @@ import React from "react";
             peopleData: [
                 {id: 1, name: "Alex"},
                 {id: 2, name: "Viktor"},
-                {id: 3, name: "Oleg"},
+                {id: 3, name: "Oleh"},
                 {id: 4, name: "Sonya"},
-                {id: 5, name: "Tolik"}
+                {id: 5, name: "Anatoliy"}
             ],
             messagesData: [
                 {id: 1, message: "hi how are you?"},
@@ -26,38 +27,28 @@ import React from "react";
                 {id: 3, message: "let's go outside"},
                 {id: 4, message: "no! Bill Gates create coronavirus!"},
                 {id: 5, message: "maaan are you seriously?"}
-            ]
-
+            ],
+            newMessageText: ''
         }
 
     },
     _RerenderEntireTree() {
-         console.log('state updated')
-     },
-
-
-     getState() {
-      return this._state
+        console.log('state updated')
     },
-     subscribe(observer) {
-         this._RerenderEntireTree = observer
-     },
 
-     addPost() {
-        let newPost = {id: 5, text: this._state.profilePage.newPostText, likes: 0};
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newPostText = '';
+    getState() {
+        return this._state
+    },
+
+    subscribe(observer) {
+        this._RerenderEntireTree = observer
+    },
+
+    dispatch(action) {
+       ProfileReducer(this._state.profilePage, action);
+       DialogsReducer(this._state.dialogsPage, action);
         this._RerenderEntireTree(this._state)
-    },
-     updateNewPostText(text) {
-        this._state.profilePage.newPostText = text;
-        this._RerenderEntireTree(this._state);
-    },
-
-
-
+    }
 
 };
-
 export default store
-
