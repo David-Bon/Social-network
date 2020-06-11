@@ -12,8 +12,8 @@ const App = (props) => {
                 <Header/>
                 <Navbar/>
                 <Route exact path="/profile"
-                       render={() => <Profile className={s.content} store={props.store}/>}/>
-                <Route path="/dialogs" render={() => <DialogsContainer store={props.store}/>}/>
+                       render={() => <Profile className={s.content}/>}/>
+                <Route path="/dialogs" render={() => <DialogsContainer/>}/>
 
             </div>
     );
