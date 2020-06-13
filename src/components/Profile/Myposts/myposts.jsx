@@ -5,7 +5,7 @@ import Post from "../Post/post";
 
 const MyPosts = (props) => {
     const {updateNewPostText, addPost, newPostText, posts} = props;
-    let postsElements = posts.map(el => <Post text={el.text} likes={el.likes}/>);
+    let postsElements = posts.map(el => <Post key={el.id} text={el.text} likes={el.likes}/>);
     let newPostElements = React.createRef();
 
     let onPostChange = () => {

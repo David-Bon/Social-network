@@ -2,12 +2,10 @@ import React from "react";
 import s from './dialogs.module.css'
 import People from "./People/people";
 import Messages from "./Messages/messages";
-import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../redux/dialogs-reducer";
-
 const Dialogs = (props) => {
     const {messagesData, peopleData, newMessageText, addMessage, messageChange} = props;
-    let messageElements = messagesData.map(el => <Messages message={el.message} id={el.id}/>);
-    let peopleElements = peopleData.map(el => <People id={el.id} name={el.name}/>);
+    let messageElements = messagesData.map(el => <Messages key={el.id} message={el.message} id={el.id}/>);
+    let peopleElements = peopleData.map(el => <People key={el.id} id={el.id} name={el.name}/>);
 
     let newMessageElements = React.createRef();
 
