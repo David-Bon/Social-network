@@ -7,7 +7,8 @@ export const addMessageActionCreator = () => ({
 
 export const updateMessageTextAction = (message) => ({
     type: UPDATE_NEW_MESSAGE_TEXT,
-    message});
+    payload: message
+});
 
 export const addPostActionCreator = () => ({
     type: ADD_POST

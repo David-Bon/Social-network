@@ -17,7 +17,7 @@ const Dialogs = (props) => {
         let message = newMessageElements.current.value;
         messageChange(message)
     };
-
+debugger
     return <div className={s.gridContainer}>
         <div className={s.pe}>{peopleElements}</div>
         <div className={s.me}>{messageElements}</div>
