@@ -1,15 +1,14 @@
 export const ON_TOGGLE_FOLLOW = "ON_TOGGLE_FOLLOW";
 export const SET_USERS = "SET_USERS";
+export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+export const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
+export const ON_TOGGLE_FETCH = "ON_TOGGLE_FETCH";
 let initialState = {
-    users: [
-        {id: 1, name: "Dima K.", photoUrl: 'https://www.meme-arsenal.com/memes/a9e0549fb28534ed1841202912114913.jpg', followed: true, status: "я хочу пиццы", location: {country: 'Donbass', city: 'Ukulele'}},
-        {id: 2, name: "Alex B.", photoUrl: 'https://www.meme-arsenal.com/memes/a9e0549fb28534ed1841202912114913.jpg', followed: true, status: "я хочу пиццы", location: {country: 'Donbass', city: 'Ukulele'}},
-        {id: 3, name: "Vlad B.", photoUrl: 'https://www.meme-arsenal.com/memes/a9e0549fb28534ed1841202912114913.jpg', followed: true, status: "я хочу пиццы", location: {country: 'Donbass', city: 'Ukulele'}},
-        {id: 4, name: "Mark Z.", photoUrl: 'https://www.meme-arsenal.com/memes/a9e0549fb28534ed1841202912114913.jpg', followed: true, status: "я хочу пиццы", location: {country: 'Donbass', city: 'Ukulele'}},
-        {id: 5, name: "Michael B.", photoUrl: 'https://www.meme-arsenal.com/memes/a9e0549fb28534ed1841202912114913.jpg', followed: true, status: "я хочу пиццы", location: {country: 'Donbass', city: 'Ukulele'}},
-        {id: 6, name: "Niko M.", photoUrl: 'https://www.meme-arsenal.com/memes/a9e0549fb28534ed1841202912114913.jpg', followed: true, status: "я хочу пиццы", location: {country: 'Donbass', city: 'Ukulele'}},
-        {id: 7, name: "Franklin K.", photoUrl: 'https://www.meme-arsenal.com/memes/a9e0549fb28534ed1841202912114913.jpg', followed: true, status: "я хочу пиццы", location: {country: 'Donbass', city: 'Ukulele'}}
-    ],
+     users: [ ],
+    pageSize: 5,
+    totalUsersCount: 0,
+    currentPage: 1,
+    isFetching: true
 };
 export const UsersReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -20,8 +19,18 @@ export const UsersReducer = (state = initialState, action) => {
             const newUsersArray = [
                 ...state.users.slice(0, userIdx), newUsersItem, ...state.users.slice(userIdx + 1)];
             return {...state, users: newUsersArray};
+        case SET_USERS:
+            return {...state, users: action.payload};
             default:
             return state;
+        case SET_CURRENT_PAGE:
+            return {...state, currentPage: action.payload};
+        case SET_TOTAL_USERS_COUNT:
+            return {...state, totalUsersCount: action.payload};
+        case ON_TOGGLE_FETCH:
+                return {...state, isFetching: action.payload}
+
+
     }
 };
 
