@@ -3,3 +3,6 @@
     grid-area: header;
     height: 50px;
 }
+.loginButt {
+    float: right;
+}

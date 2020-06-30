@@ -7,6 +7,7 @@ const Profile = (props) => {
 return <div className={s.content}>
         <UserInfo profile={props.profile}/>
         <MyPostsContainer/>
+    { console.log(props) }
     </div>
 };
 

@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import MyPosts from "./myposts";
 import {connect} from "react-redux";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/actions/action";
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/actions/profile-actions";
 
 class MyPostsContainer extends Component {
 

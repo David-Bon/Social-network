@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {onToggleFetch, onToggleFollow, setCurrentPage, setTotalUsersCount, setUsers} from "../../redux/actions/action";
+import {onToggleFetch, onToggleFollow, setCurrentPage, setTotalUsersCount, setUsers} from "../../redux/actions/users-actions";
 import Users from "./users";
 import * as axios from "axios";
 import Preloader from "../common/Preloader/preloader";

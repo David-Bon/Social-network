@@ -1,7 +1,7 @@
 export const ADD_POST = "ADD_POST";
-let max_id = 5;
 export const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
 export const SET_USER_PROFILE = "SET_USER_PROFILE";
+let max_id = 5;
 
 let initialState = {
         posts: [

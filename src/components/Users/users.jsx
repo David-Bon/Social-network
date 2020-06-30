@@ -11,12 +11,13 @@ let pages = [];
 for(let i = 1; i<=pagesCount; i++) {
     pages.push(i)
 }
-
+debugger
  return <div className={s.gridContainer}>
         <div>
-            {pages.map(p => {
+            {
+                pages.map(p => {
                 return <span className={currentPage === p && s.selectedPage}
-                             onClick={() => {
+                             onClick={(e) => {
                                  onPageChanged(p);
                              }}>{p}</span>
             })}
