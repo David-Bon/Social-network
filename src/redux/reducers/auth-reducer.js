@@ -8,7 +8,6 @@ let initialState = {
     isAuth: false
 };
 export const AuthReducer = (state = initialState, action) => {
-    debugger
     switch (action.type) {
 
         case SET_USERS_DATA:

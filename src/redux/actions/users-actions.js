@@ -1,16 +1,20 @@
 import {
+    FOLLOW,
     ON_TOGGLE_FETCH,
-    ON_TOGGLE_FOLLOW,
     SET_CURRENT_PAGE,
     SET_TOTAL_USERS_COUNT,
-    SET_USERS
+    SET_USERS, TOGGLE_IS_FOLLOWING_PROGRESS, UNFOLLOW
 } from "../reducers/users-reducer";
 
-
-export const onToggleFollow = (id) => ({
-    type: ON_TOGGLE_FOLLOW,
+export const follow = (id) => ({
+    type: FOLLOW,
     payload: id
-});
+})
+
+export const unFollow = (id) => ({
+    type: UNFOLLOW,
+    payload: id
+})
 
 export const setUsers = (users) => ({
     type: SET_USERS,
@@ -30,4 +34,9 @@ export const setTotalUsersCount = (totalCount) => ({
 export const onToggleFetch = (bool) => ({
     type: ON_TOGGLE_FETCH,
     payload: bool
+});
+
+export const toggleFollowInProgress = (isFetching, userId) => ({
+   type: TOGGLE_IS_FOLLOWING_PROGRESS,
+    isFetching, userId
 });

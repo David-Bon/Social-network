@@ -1,36 +1,64 @@
-export const ON_TOGGLE_FOLLOW = "ON_TOGGLE_FOLLOW";
+export const FOLLOW = "FOLLOW";
+export const UNFOLLOW = "UNFOLLOW";
 export const SET_USERS = "SET_USERS";
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 export const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
 export const ON_TOGGLE_FETCH = "ON_TOGGLE_FETCH";
+export const TOGGLE_IS_FOLLOWING_PROGRESS = "TOGGLE_IS_FOLLOWING_PROGRESS";
 let initialState = {
-     users: [ ],
+    users: [],
     pageSize: 5,
     totalUsersCount: 0,
     currentPage: 1,
-    isFetching: true
+    isFetching: true,
+    followingInProgress: [],
+
 };
 export const UsersReducer = (state = initialState, action) => {
+
     switch (action.type) {
-        case ON_TOGGLE_FOLLOW:
-            const userIdx = state.users.findIndex(item => item.id === action.payload);
-            const userItem = state.users[userIdx];
-            const newUsersItem = {...userItem, ['followed'] : !userItem['followed']};
-            const newUsersArray = [
-                ...state.users.slice(0, userIdx), newUsersItem, ...state.users.slice(userIdx + 1)];
-            return {...state, users: newUsersArray};
+
+        case FOLLOW:
+            return {
+                ...state,
+                users: state.users.map(u => {
+                    if (u.id === action.payload) {
+                        return {...u, followed: true}
+                    }
+                    return u;
+                })
+            }
+
+        case UNFOLLOW:
+            return {
+                ...state,
+                users: state.users.map(u => {
+                    if (u.id === action.payload) {
+                        return {...u, followed: false}
+                    }
+                    return u;
+                })
+            }
         case SET_USERS:
             return {...state, users: action.payload};
-            default:
-            return state;
+
         case SET_CURRENT_PAGE:
             return {...state, currentPage: action.payload};
+
         case SET_TOTAL_USERS_COUNT:
             return {...state, totalUsersCount: action.payload};
+
         case ON_TOGGLE_FETCH:
-                return {...state, isFetching: action.payload}
+            return {...state, isFetching: action.payload}
 
+        case TOGGLE_IS_FOLLOWING_PROGRESS:
+debugger
+            return {...state, followingInProgress: action.isFetching
+                    ? [...state.followingInProgress, action.userId]
+                    : state.followingInProgress.filter(cId => cId !== action.userId)}
 
+        default:
+            return state;
     }
 };
 
