@@ -52,7 +52,6 @@ export const UsersReducer = (state = initialState, action) => {
             return {...state, isFetching: action.payload}
 
         case TOGGLE_IS_FOLLOWING_PROGRESS:
-debugger
             return {...state, followingInProgress: action.isFetching
                     ? [...state.followingInProgress, action.userId]
                     : state.followingInProgress.filter(cId => cId !== action.userId)}
