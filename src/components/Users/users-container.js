@@ -11,6 +11,8 @@ import {
 } from "../../redux/actions/users-actions";
 import Users from "./users";
 import Preloader from "../common/Preloader/preloader";
+import {compose} from "redux";
+import {withAuthRedirect} from "../HOC/isAuthHOC";
 
 
 class UsersContainer extends Component {
@@ -58,4 +60,7 @@ const mapDispatchToProps = {
     getUsers: getUsersThunkCreator,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    withAuthRedirect
+)(UsersContainer)

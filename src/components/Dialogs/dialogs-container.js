@@ -3,14 +3,13 @@ import Dialogs from "./dialogs";
 import {connect} from "react-redux";
 import {addMessageActionCreator, updateMessageTextAction} from "../../redux/actions/dialogs-actions";
 import {withAuthRedirect} from "../HOC/isAuthHOC";
-
-
+import {compose} from "redux";
 
 class DialogsContainer extends Component {
 
     render() {
         const {peopleData, messagesData, newMessageText, updateMessageTextAction, addMessageActionCreator} = this.props;
-        return  <Dialogs newMessageText={newMessageText}
+        return <Dialogs newMessageText={newMessageText}
                         peopleData={peopleData} messagesData={messagesData}
                         messageChange={updateMessageTextAction} addMessage={addMessageActionCreator}/>
     }
@@ -24,6 +23,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
     updateMessageTextAction, addMessageActionCreator
 };
-let AuthRedirectComponent = withAuthRedirect(DialogsContainer);
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent)
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    withAuthRedirect
+)(DialogsContainer)
