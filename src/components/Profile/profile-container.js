@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import Profile from "./profile";
 import {getProfileByUserIdThunkCreator} from "../../redux/actions/profile-actions";
 import {withRouter} from "react-router-dom";
+import {withAuthRedirect} from "../HOC/isAuthHOC";
 
 class ProfileContainer extends Component {
 
@@ -28,5 +29,5 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
      getProfileUserId: getProfileByUserIdThunkCreator
 };
-
-export default connect(mapStateToProps, mapDispatchToProps)(withUrlDataContainerComponent);
+let AuthRedirectComponent = withAuthRedirect(withUrlDataContainerComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
