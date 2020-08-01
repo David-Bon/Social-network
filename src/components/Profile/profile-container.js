@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import Profile from "./profile";
-import {getProfileByUserIdThunkCreator} from "../../redux/actions/profile-actions";
+import {getProfileByUserIdThunkCreator, getUserStatus, updateStatus} from "../../redux/actions/profile-actions";
 import {withRouter} from "react-router-dom";
 import {withAuthRedirect} from "../HOC/isAuthHOC";
 import {compose} from "redux";
@@ -10,12 +10,16 @@ class ProfileContainer extends Component {
 
     componentDidMount() {
         let userId = this.props.match.params.userId;
+        if (userId === undefined) {
+            userId = 9029
+        }
         this.props.getProfileUserId(userId)
+        this.props.getUserStatus(userId)
     };
 
     render() {
-        const {profile} = this.props;
-        return <Profile profile={profile} {...this.props}/>
+        const {profile, status, updateStatus} = this.props;
+        return <Profile updateStatus={updateStatus} profile={profile} status={status} {...this.props}/>
     }
 
 }
@@ -23,10 +27,12 @@ class ProfileContainer extends Component {
 const mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
     usersId: state.UsersReducer.users.id,
+    status: state.profilePage.status
 });
 
 const mapDispatchToProps = {
-    getProfileUserId: getProfileByUserIdThunkCreator
+    getProfileUserId: getProfileByUserIdThunkCreator,
+    getUserStatus, updateStatus
 };
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),

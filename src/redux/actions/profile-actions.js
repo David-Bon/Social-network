@@ -1,12 +1,9 @@
-import {ADD_POST, SET_USER_PROFILE, UPDATE_NEW_POST_TEXT} from "../reducers/profile-reducer";
+import {ADD_POST, SET_STATUS, SET_USER_PROFILE} from "../reducers/profile-reducer";
 import {profileApi} from "../../api/api";
 
-export const addPostActionCreator = () => ({
-    type: ADD_POST
-});
-
-export const updateNewPostTextActionCreator = (message) => ({
-    type: UPDATE_NEW_POST_TEXT, payload: message
+export const addPostActionCreator = (newPostText) => ({
+    type: ADD_POST,
+    payload: newPostText
 });
 
 export const setUserProfile = (id) => ({
@@ -14,11 +11,32 @@ export const setUserProfile = (id) => ({
     payload: id
 });
 
+export const setStatus = (status) => ({
+    type: SET_STATUS,
+    payload: status
+})
+
 export const getProfileByUserIdThunkCreator = (userId) => {
     return (dispatch) => {
         profileApi.getIdFromUsers(userId)
             .then(data => {
                 dispatch(setUserProfile(data))
             })
-        };
-    }
+    };
+}
+
+export const getUserStatus = (userId) => (dispatch) => {
+    profileApi.getStatus(userId)
+        .then(response => dispatch(setStatus(response.data)))
+}
+
+export const updateStatus = (status) => (dispatch) => {
+    profileApi.updateStatus(status)
+        .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(setStatus(status))
+                }
+            }
+        )
+
+}

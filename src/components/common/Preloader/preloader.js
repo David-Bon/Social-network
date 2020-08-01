@@ -1,11 +1,9 @@
 import React from "react";
-import s from './preloader.module.css'
-
+import './preloader.css'
 
 const Preloader = () => {
-return <div className={s.hourglass}></div>
-};
-
+    return <span className="cssload-loader"><span className="cssload-loader-inner"></span></span>
+}
 
 
 export default Preloader

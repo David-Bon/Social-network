@@ -1,29 +1,25 @@
 import React from "react";
 import s from './myposts.module.css'
 import Post from "../Post/post";
+import {MyPostReduxForm} from "./MyPostReduxForm/MyPostForm";
 
 
 const MyPosts = (props) => {
-    const {updateNewPostText, addPost, newPostText, posts} = props;
+    const {addPost, posts} = props;
+    const onSubmit = (formData) => {
+        addPost(formData.newPostText)
+        formData.newPostText= ''
+    }
     let postsElements = posts.map(el => <Post key={el.id} text={el.text} likes={el.likes}/>);
-    let newPostElements = React.createRef();
 
-    let onPostChange = () => {
-        let text = newPostElements.current.value;
-        updateNewPostText(text)
-    };
-    let onAddPost = () => {
-        addPost()
-    };
     return <div>
         <div className={s.inputGroup}>
-            <textarea className={s.formControl} ref={newPostElements} onChange={onPostChange} value={newPostText}
-                      placeholder="Default input"/>
+            <MyPostReduxForm onSubmit={onSubmit} addPost={addPost}/>
         </div>
-        <button className={s.inputGroupText} onClick={onAddPost}>Add</button>
         <div className={s.group}>
             {postsElements}
         </div>
+        {console.log(props)}
     </div>
 };
 

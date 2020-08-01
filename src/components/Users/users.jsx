@@ -2,27 +2,14 @@ import React from "react";
 import s from './users.module.css'
 import userPhoto from '../../assets/users/a9e0549fb28534ed1841202912114913.jpg'
 import {NavLink} from "react-router-dom";
+import PagesRender from "./pagesRender";
 
 const Users = (props) => {
-    const {users, unFollow, follow, currentPage, pageSize, totalUsersCount, onPageChanged, followingInProgress} = props;
-
-    let pagesCount = Math.ceil(totalUsersCount / pageSize);
-
-    let pages = [];
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i)
-    }
+    const {users, unFollow, follow, followingInProgress, currentPage, pageSize, totalUsersCount, onPageChanged} = props;
 
     return <div className={s.gridContainer}>
-        <div>
-            {
-                pages.map(p => {
-                    return <span className={currentPage === p && s.selectedPage}
-                                 onClick={() => {
-                                     onPageChanged(p);
-                                 }}>{p}</span>
-                })}
-        </div>
+        <PagesRender currentPage={currentPage} pageSize={pageSize} totalUsersCount={totalUsersCount}
+                     onPageChanged={onPageChanged}/>
         {
             users.map((item) => {
                 const {id, photos, name, followed, status} = item;

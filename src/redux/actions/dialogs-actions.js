@@ -1,11 +1,7 @@
-import {ADD_MESSAGE, UPDATE_NEW_MESSAGE_TEXT} from "../reducers/dialogs-reducer";
+import {ADD_MESSAGE} from "../reducers/dialogs-reducer";
 
 
-export const addMessageActionCreator = () => ({
-    type: ADD_MESSAGE
-});
-
-export const updateMessageTextAction = (message) => ({
-    type: UPDATE_NEW_MESSAGE_TEXT,
+export const addMessageActionCreator = (message) => ({
+    type: ADD_MESSAGE,
     payload: message
 });
