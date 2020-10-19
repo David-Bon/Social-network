@@ -8,7 +8,7 @@ import ProfileContainer from "./components/Profile/profile-container";
 import HeaderContainer from "./components/Header/header-container";
 import LoginPage from "./components/Login/login";
 
-const App = (props) => {
+const App = () => {
     return (
         <div id="app-wrapper" className={s.appWrapper}>
             <HeaderContainer/>
@@ -21,7 +21,6 @@ const App = (props) => {
                    render={() => <UsersContainer/>}/>
             <Route path="/login"
                    render={() => <LoginPage/>}/>
-
         </div>
     );
 };

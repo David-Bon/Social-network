@@ -46,15 +46,21 @@ export const UsersReducer = (state = initialState, action) => {
             return {...state, currentPage: action.payload};
 
         case SET_TOTAL_USERS_COUNT:
-            return {...state, totalUsersCount: action.payload};
+            if (action.payload > 100) {
+                action.payload = 100;
+                return {...state, totalUsersCount: action.payload}
+            }
 
+        // eslint-disable-next-line no-fallthrough
         case ON_TOGGLE_FETCH:
             return {...state, isFetching: action.payload}
 
         case TOGGLE_IS_FOLLOWING_PROGRESS:
-            return {...state, followingInProgress: action.isFetching
+            return {
+                ...state, followingInProgress: action.isFetching
                     ? [...state.followingInProgress, action.userId]
-                    : state.followingInProgress.filter(cId => cId !== action.userId)}
+                    : state.followingInProgress.filter(cId => cId !== action.userId)
+            }
 
         default:
             return state;

@@ -1,14 +1,19 @@
 import React from "react";
-import  {LoginReduxForm} from "./LoginForm/loginForm";
-
+import {connect} from "react-redux";
+import {loginThunkCreator} from "../../redux/actions/auth-actions";
+import Redirect from "react-router-dom/es/Redirect";
+import {LoginReduxForm} from "./LoginReduxForm/LoginForm";
 
 const LoginPage = (props) => {
     const onSubmit = (formData) => {
         console.log(formData)
+        props.loginThunkCreator(formData.email, formData.password, formData.rememberMe)
     }
+    return props.isAuth ? <Redirect to={"/profile"}/> : <LoginReduxForm onSubmit={onSubmit} setLoginData={props.loginThunkCreator}/>
+}
 
+const mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth
+})
 
-    return <LoginReduxForm onSubmit={onSubmit}/>
-};
-
-export default LoginPage
+export default connect(mapStateToProps, {loginThunkCreator})(LoginPage)

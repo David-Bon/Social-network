@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React from "react";
 import s from "./users.module.css";
 
 const PagesRender = (props) => {
     const {currentPage, pageSize, totalUsersCount, onPageChanged} = props;
-    const [pages]=useState([])
+    let pages = []
     let pagesCount = Math.ceil(totalUsersCount / pageSize);
     for (let i = 1; i <= pagesCount; i++) {
             pages.push(i)

@@ -37,7 +37,6 @@ class UsersContainer extends Component {
                            toggleFollowInProgress={toggleFollowInProgress} followingInProgress={followingInProgress}/>
             }
         </>
-
     }
 }
 
