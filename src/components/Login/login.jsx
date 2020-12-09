@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {loginThunkCreator} from "../../redux/actions/auth-actions";
-import Redirect from "react-router-dom/es/Redirect";
+import {Redirect} from "react-router-dom";
 import {LoginReduxForm} from "./LoginReduxForm/LoginForm";
 
 const LoginPage = (props) => {
@@ -9,7 +9,9 @@ const LoginPage = (props) => {
         console.log(formData)
         props.loginThunkCreator(formData.email, formData.password, formData.rememberMe)
     }
-    return props.isAuth ? <Redirect to={"/profile"}/> : <LoginReduxForm onSubmit={onSubmit} setLoginData={props.loginThunkCreator}/>
+    return (
+        props.isAuth ? <Redirect to={"/profile"}/> : <LoginReduxForm onSubmit={onSubmit} setLoginData={props.loginThunkCreator}/>
+    )
 }
 
 const mapStateToProps = (state) => ({

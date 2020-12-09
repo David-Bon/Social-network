@@ -16,7 +16,7 @@ export const setStatus = (status) => ({
     payload: status
 })
 
-export const getProfileByUserIdThunkCreator = (userId) => {
+export const getProfileUserIdTC = (userId) => {
     return (dispatch) => {
         profileApi.getIdFromUsers(userId)
             .then(data => {

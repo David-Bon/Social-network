@@ -9,7 +9,9 @@ const mapStateToPropsRedirect = (state) => ({
 export const withAuthRedirect = (Component) => {
   class isAuth extends React.Component {
         render() {
-            return this.props.isAuth ? <Component {...this.props}/> : <Redirect to={"/login"}/>
+            return (
+                this.props.isAuth ? <Component {...this.props}/> : <Redirect to={"/login"}/>
+            )
         }
     }
     let RedirectComponent = connect(mapStateToPropsRedirect)(isAuth);

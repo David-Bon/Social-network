@@ -8,7 +8,6 @@ export const AppReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case INITIALIZE_SUCCESS:
-            debugger
             return {
                 ...state, initialized: true
             };

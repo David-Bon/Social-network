@@ -19,11 +19,13 @@ const renderTextField = ({input, meta: {touched, invalid, error}}) => (
 
 const MyPostForm = (props) => {
     const {handleSubmit} = props
-    return <form onSubmit={handleSubmit}>
-        <Field name="newPostText" component={renderTextField} type="text"/>
-        <Button variant="contained" color="primary" type="submit">Submit</Button>
-        {console.log(props)}
-    </form>
+    return (
+        <form onSubmit={handleSubmit}>
+            <Field name="newPostText" component={renderTextField} type="text"/>
+            <Button variant="contained" color="primary" type="submit">Submit</Button>
+            {console.log(props)}
+        </form>
+    )
 }
 
 export const MyPostReduxForm = reduxForm({

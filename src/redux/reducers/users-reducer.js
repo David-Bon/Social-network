@@ -12,8 +12,8 @@ let initialState = {
     currentPage: 1,
     isFetching: true,
     followingInProgress: [],
-
 };
+
 export const UsersReducer = (state = initialState, action) => {
 
     switch (action.type) {

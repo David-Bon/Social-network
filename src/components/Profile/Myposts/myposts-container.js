@@ -8,8 +8,10 @@ class MyPostsContainer extends Component {
     render() {
 
         const {addPostActionCreator, posts} = this.props;
-        return <MyPosts addPost={addPostActionCreator} posts={posts}
-        />
+        return (
+            <MyPosts addPost={addPostActionCreator} posts={posts}
+            />
+        )
     }
 }
 

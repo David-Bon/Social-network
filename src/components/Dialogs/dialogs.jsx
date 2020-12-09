@@ -11,15 +11,16 @@ const Dialogs = (props) => {
 
     const onSubmit = (formData) => {
         addMessage(formData.newMessageText)
-        formData.newMessageText= ""
+        formData.newMessageText = ""
     }
 
-    return <div className={s.gridContainer}>
-        <div className={s.pe}>{peopleElements}</div>
-        <div className={s.me}>{messageElements}</div>
-        <div className={s.content}><DialogsReduxForm onSubmit={onSubmit}/></div>
-
-    </div>
+    return (
+        <div className={s.gridContainer}>
+            <div className={s.pe}>{peopleElements}</div>
+            <div className={s.me}>{messageElements}</div>
+            <div className={s.content}><DialogsReduxForm onSubmit={onSubmit}/></div>
+        </div>
+    )
 };
 
 

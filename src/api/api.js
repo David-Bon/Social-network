@@ -10,55 +10,71 @@ const instance = axios.create({
 
 export const usersApi = {
     getUsers(currentPage = 1, pageSize = 10) {
-        return instance.get(`users?page=${currentPage}&count=${pageSize}`)
-            .then(response => {
-                return response.data
-            });
+        return (
+            instance.get(`users?page=${currentPage}&count=${pageSize}`)
+                .then(response => {
+                    return response.data
+                })
+        )
     },
 
     toggleFollowDel(id) {
-        return instance.delete(`follow/${id}`)
-            .then(response => {
-                return response.data
-            })
+        return (
+            instance.delete(`follow/${id}`)
+                .then(response => {
+                    return response.data
+                })
+        )
     },
 
     toggleFollowPost(id) {
-        return instance.post(`follow/${id}`)
-            .then(response => {
-                return response.data
-            })
+        return (
+            instance.post(`follow/${id}`)
+                .then(response => {
+                    return response.data
+                })
+        )
     }
 }
 
 export const authApi = {
     getAuth() {
-        return instance.get(`auth/me`)
-            .then(response => {
-                return response.data
-            })
+        return (
+            instance.get(`auth/me`)
+                .then(response => {
+                    return response.data
+                })
+        )
     },
 
     logIn(email, password, rememberMe = false) {
-        return instance.post(`auth/login`, {email, password, rememberMe})
+        return (
+            instance.post(`auth/login`, {email, password, rememberMe})
+        )
     },
 
     logOut() {
-        return instance.delete(`auth/login`)
+        return (
+            instance.delete(`auth/login`)
+        )
     },
 
 }
 
 export const profileApi = {
     getIdFromUsers(userId = 9029) {
-        return instance.get(`profile/${userId}`)
-            .then(response => {
-                return response.data
-            });
+        return (
+            instance.get(`profile/${userId}`)
+                .then(response => {
+                    return response.data
+                })
+        )
     },
 
     getStatus(userId) {
-        return instance.get(`profile/status/${userId}`)
+        return (
+            instance.get(`profile/status/${userId}`)
+        )
     },
 
     updateStatus(status) {

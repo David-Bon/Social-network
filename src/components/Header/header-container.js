@@ -6,7 +6,9 @@ import {logoutTC} from "../../redux/actions/auth-actions";
 class HeaderContainer extends Component {
 
     render() {
-        return <Header {...this.props} isAuth={this.props.isAuth} login={this.props.login} logout={this.props.logout}/>
+        return (
+            <Header {...this.props} isAuth={this.props.isAuth} login={this.props.login} logout={this.props.logout}/>
+        )
     }
 }
 

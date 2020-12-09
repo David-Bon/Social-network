@@ -1,40 +1,37 @@
-import React, {Component} from "react";
+import React, {useEffect, useState} from "react";
 import s from "./profile-status.module.css"
 
-export default class ProfileStatus extends Component {
+const ProfileStatus = (props) => {
+    const [isActive, setIsActive] = useState(false)
+    const [status, setStatus] = useState(props.status)
 
-    state = {
-        isActive: false,
-        status: this.props.status
+    useEffect(() => {
+        setStatus(props.status)
+    }, [props.status])
+
+    const deactivateChangingMode = () => {
+        setIsActive(false)
+        props.updateStatus(status)
     }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if(prevProps.status !== this.props.status) {
-            this.setState({ status: this.props.status})
-        }
+    const activateChangingMode = () => {
+        setIsActive(true)
     }
-
-    activateChangingMode = () => {
-        this.setState({isActive: true})
+    const onStatusChange = (e) => {
+        setStatus(e.currentTarget.value)
     }
-
-    deactivateChangingMode = () => {
-        this.setState({isActive: false})
-        this.props.updateStatus(this.state.status)
-    }
-
-    render() {
-        return <div>
+    return (
+        <div>
             {
-                this.state.isActive ?
-                    <div><input className={s.inputV} value={this.state.status}
-                                onChange={(e) => this.setState({status: e.target.value})}
-                                onBlur={this.deactivateChangingMode}/></div> :
-                    <div><span onDoubleClick={this.activateChangingMode}>{this.props.status || "No status"}</span></div>
+                isActive && <div><input className={s.inputV} value={status}
+                                        onChange={(e) => onStatusChange(e)}
+                                        onBlur={deactivateChangingMode}/></div>
+            }
 
-
+            {
+                !isActive && <div><span onDoubleClick={activateChangingMode}>{props.status || "No status"}</span></div>
             }
         </div>
-
-    }
+    )
 }
+
+export default ProfileStatus

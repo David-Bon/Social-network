@@ -14,15 +14,18 @@ const MyPosts = (props) => {
     }
     let postsElements = posts.map(el => <Post key={el.id} text={el.text} likes={el.likes}/>);
 
-    return <div>
-        <div className={s.inputGroup}>
-            <MyPostReduxForm onSubmit={onSubmit} maxLength10={maxLength10} addPost={addPost}/>
+    return (
+        <div>
+            <div className={s.inputGroup}>
+                <MyPostReduxForm onSubmit={onSubmit} maxLength10={maxLength10} addPost={addPost}/>
+            </div>
+            <div className={s.group}>
+                {postsElements}
+            </div>
+            {console.log(props)}
         </div>
-        <div className={s.group}>
-            {postsElements}
-        </div>
-        {console.log(props)}
-    </div>
+        )
+
 };
 
 export default MyPosts
