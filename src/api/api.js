@@ -18,7 +18,7 @@ export const usersApi = {
         )
     },
 
-    toggleFollowDel(id) {
+    follow(id) {
         return (
             instance.delete(`follow/${id}`)
                 .then(response => {
@@ -27,7 +27,7 @@ export const usersApi = {
         )
     },
 
-    toggleFollowPost(id) {
+    unfollow(id) {
         return (
             instance.post(`follow/${id}`)
                 .then(response => {

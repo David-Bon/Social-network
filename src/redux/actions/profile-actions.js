@@ -16,27 +16,19 @@ export const setStatus = (status) => ({
     payload: status
 })
 
-export const getProfileUserIdTC = (userId) => {
-    return (dispatch) => {
-        profileApi.getIdFromUsers(userId)
-            .then(data => {
-                dispatch(setUserProfile(data))
-            })
-    };
+export const getProfileUserIdTC = (userId) => async (dispatch) => {
+    let data = await profileApi.getIdFromUsers(userId)
+    dispatch(setUserProfile(data))
 }
 
-export const getUserStatus = (userId) => (dispatch) => {
-    profileApi.getStatus(userId)
-        .then(response => dispatch(setStatus(response.data)))
+export const getUserStatus = (userId) => async (dispatch) => {
+    let response = await profileApi.getStatus(userId);
+    dispatch(setStatus(response.data))
 }
 
-export const updateStatus = (status) => (dispatch) => {
-    profileApi.updateStatus(status)
-        .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(setStatus(status))
-                }
-            }
-        )
-
+export const updateStatus = (status) => async (dispatch) => {
+    let response = await profileApi.updateStatus(status)
+    if (response.data.resultCode === 0) {
+        dispatch(setStatus(status))
+    }
 }

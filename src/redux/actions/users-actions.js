@@ -7,13 +7,13 @@ import {
 } from "../reducers/users-reducer";
 import {usersApi} from "../../api/api";
 
-export const follow = (id) => ({
-    type: FOLLOW,
+export const unFollow = (id) => ({
+    type: UNFOLLOW,
     payload: id
 })
 
-export const unFollow = (id) => ({
-    type: UNFOLLOW,
+export const follow = (id) => ({
+    type: FOLLOW,
     payload: id
 })
 
@@ -38,44 +38,34 @@ export const onToggleFetch = (bool) => ({
 });
 
 export const toggleFollowInProgress = (isFetching, userId) => ({
-   type: TOGGLE_IS_FOLLOWING_PROGRESS,
+    type: TOGGLE_IS_FOLLOWING_PROGRESS,
     isFetching, userId
 });
 
-export const getUsersThunkCreator = (currentPage, totalUsersCount) => {
-    return (dispatch) => {
-        dispatch(onToggleFetch(true));
-        usersApi.getUsers(currentPage, totalUsersCount).then(data => {
-            dispatch(setUsers(data.items));
-            dispatch(setTotalUsersCount(data.totalCount));
-            dispatch(onToggleFetch(false));
-        })
-
-    };
+export const getUsersThunkCreator = (currentPage, totalUsersCount) => async (dispatch) => {
+    dispatch(onToggleFetch(true));
+    let data = await usersApi.getUsers(currentPage, totalUsersCount);
+    dispatch(setUsers(data.items));
+    dispatch(setTotalUsersCount(data.totalCount));
+    dispatch(onToggleFetch(false));
 };
 
+const followUnfollowFlow = async (dispatch, id, apiMethod, actionCreator) => {
+    dispatch(toggleFollowInProgress(true, id));
+    let data = await apiMethod(id);
+    if (data.resultCode === 0) {
+        dispatch(actionCreator(id))
+    }
+    dispatch(toggleFollowInProgress(false, id));
+}
+
+
 export const followThunkCreator = (id) => {
-    return (dispatch) => {
-      dispatch(toggleFollowInProgress(true, id));
-        usersApi.toggleFollowDel(id)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(unFollow(id))
-                }
-                dispatch(toggleFollowInProgress(false, id));
-            })
+    return async (dispatch) => {
+        followUnfollowFlow(dispatch, id, usersApi.follow.bind(usersApi), follow)
     }
 }
 
-export const unFollowThunkCreator = (id) => {
-    return (dispatch) => {
-        dispatch(toggleFollowInProgress(true, id))
-        usersApi.toggleFollowPost(id)
-            .then(data => {
-                if (data.resultCode === 0) {
-                  dispatch(follow(id))
-                }
-              dispatch(toggleFollowInProgress(false, id))
-            })
-    }
+export const unFollowThunkCreator = (id) => async (dispatch) => {
+    followUnfollowFlow(dispatch, id, usersApi.unfollow.bind(usersApi), unFollow)
 }
